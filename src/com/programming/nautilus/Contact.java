@@ -35,5 +35,33 @@ public class Contact {
 		this.phoneNumber = phoneNumber;
 	}
 	
+	public void validateFirstName() {
+		if (this.firstName.isBlank())
+			throw new RuntimeException("First Name cannot be null or empty");
+	}
+	
+	public void validateLastName() {
+		if (this.lastName.isBlank())
+			throw new RuntimeException("Last Name cannot be null or empty");
+	}
+	
+	public void validatePhoneNumber() {
+		if (this.phoneNumber.isBlank()) {
+			throw new RuntimeException("Phone Number cannot be null or empty");
+		}
+		
+		if (this.phoneNumber.length() != 10) {
+			throw new RuntimeException("Phone Number should be 10 digits long");
+		}
+		
+		if (!this.phoneNumber.matches("\\d+")) {
+			throw new RuntimeException("Phone Number should contain only digits");
+		}
+		
+		if (!this.phoneNumber.startsWith("0")) {
+			throw new RuntimeException("Phone Number should start with 0");
+		}
+	}
+	
 	
 }
